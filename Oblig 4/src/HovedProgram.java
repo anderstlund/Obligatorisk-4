@@ -3,7 +3,7 @@ public class HovedProgram {
 
 	public static void main(String[] args) {
 		
-		Lege nyLege = new Lege("Dangfart Tønnesen"); //Oppretter en lege
+		Lege nyLege = new Lege("Dangfart Tï¿½nnesen"); //Oppretter en lege
 		Spesialist spesialist = new Spesialist("Knut Knudsen", 2); //Oppretter spesialist
 		//toString: skriver ut
 		System.out.println(nyLege.toString());
@@ -21,7 +21,7 @@ public class HovedProgram {
 		System.out.println(vanligLegemiddel1.toString());
 		
 		//Resept:
-		HvitResept hvitResept = new HvitResept(vanligLegemiddel, nyLege, 1, 1);//Oppretter hvit resept med paracetamol som legemiddel, og Dangfart Tønnesen som lege
+		HvitResept hvitResept = new HvitResept(vanligLegemiddel, nyLege, 1, 1);//Oppretter hvit resept med paracetamol som legemiddel, og Dangfart Tï¿½nnesen som lege
 		MilitaerResept militaerResept = new MilitaerResept(narkotiskLegemiddel, nyLege, 2, 5);
 		PResept pResept = new PResept(vanligLegemiddel1, nyLege, 3, 1);
 		BlaaResept blaaResept = new BlaaResept(narkotiskLegemiddel, nyLege, 4, 3);

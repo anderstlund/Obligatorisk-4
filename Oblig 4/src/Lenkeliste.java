@@ -206,6 +206,7 @@ public class Lenkeliste<T> implements Liste<T> {
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		LenkelisteIterator<T> lenkeIterator = new LenkelisteIterator<T>();
+		return lenkeIterator;
 	}
 }

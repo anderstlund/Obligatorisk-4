@@ -33,16 +33,16 @@ public abstract class TestResepter {
 		}
 		
 		public static void testHvitResept(Legemiddel pLegemiddel, Lege pLege) {
-			HvitResept resept = new HvitResept(pLegemiddel, pLege, 10, 2);
+		//	HvitResept resept = new HvitResept(pLegemiddel, pLege, 10, 2);
 			System.out.println("Test HvitResept");
-			System.out.println(resept.toString());
+			//System.out.println(resept.toString());
 			
 		}
 		
 		public static void testBlaaResept(Legemiddel pLegemiddel, Lege pLege) {
-			BlaaResept resept = new BlaaResept(pLegemiddel, pLege, 10, 2);
+			//BlaaResept resept = new BlaaResept(pLegemiddel, pLege, 10, 2);
 			System.out.println("Test BlaaResept");
-			System.out.println(resept.toString());
+			//System.out.println(resept.toString());
 			
 		}
 	}

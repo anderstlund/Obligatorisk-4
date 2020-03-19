@@ -12,7 +12,7 @@ public class Pasient {
 		this.navn = navn;
 		this.foedselsnummer = foedselsnummer;
 		this.unikId = id.getAndIncrement();
-		stabelResepter = new Stabel<Resept>();
+		Stabel stabelResepter = new Stabel<Resept>();
 	}
 	
 	public void leggTilResept(Resept x) {
@@ -21,15 +21,15 @@ public class Pasient {
 	
 	public Stabel<Resept> hentResepter() {
 		return stabelResepter;
+		this.unikId = unikId;
+		Stabel stabelResepter = new Stabel<Resept>();
+		this.unikId = unikId;
+		Stabel stabelResepter = new Stabel<Resept>();
 	}
 	
-	//public Resept brukResept() {
-	//	stabelResepter.taAv();
-	//}
-	
-	@Override
-	public String toString() {
-		return "Navn: " + navn + " . Foedselsnummer: " + foedselsnummer + " . Unik id: " + unikId;
+	public void leggTilResept() {
+		
 	}
 	
+
 }
