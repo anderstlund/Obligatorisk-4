@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LenkelisteIterator implements Iterator<T> {
+public class LenkelisteIterator<T> implements Iterator<T> {
 
 	@Override
 	public boolean hasNext() {

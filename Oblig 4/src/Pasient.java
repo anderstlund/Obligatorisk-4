@@ -2,15 +2,15 @@
 public class Pasient {
 	
 	public String navn;
-	public String fødselsnummer;
+	public String foedselsnummer;
 	public int unikId;
 	//public Stabel<Resept> stabelResepeter;
 	
-	public Pasient(String navn, String fødselsnummer, int unikId) {
+	public Pasient(String navn, String foedselsnummer, int unikId) {
 		this.navn = navn;
-		this.fødselsnummer = fødselsnummer;
+		this.foedselsnummer = foedselsnummer;
 		this.unikId = unikId;
-		Stabel<Resept> stabelResepeter = new Stabel<Resept>();
+		Stabel stabelResepter = new Stabel<Resept>();
 	}
 	
 	public void leggTilResept() {
