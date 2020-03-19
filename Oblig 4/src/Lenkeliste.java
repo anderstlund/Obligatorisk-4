@@ -1,3 +1,4 @@
+import java.util.Iterator;
 
 public class Lenkeliste<T> implements Liste<T> {
 	class Node {
@@ -130,5 +131,11 @@ public class Lenkeliste<T> implements Liste<T> {
 		Node temp = start;
 		temp = temp.neste;
 		return temp.data;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
