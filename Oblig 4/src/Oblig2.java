@@ -125,17 +125,17 @@ abstract class Resept{
 	private static final AtomicInteger id = new AtomicInteger(0);
 	Legemiddel legemiddel;
 	Lege utskrivendeLege;
-	int pasientId;
+	Pasient pasient;
 	int reit;
 	int unikId;
 	String farge;
 	boolean militaerResept = false;
 	boolean pResept = false;
 	
-	public Resept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, int pPasientId, int pReit, String pFarge) {
+	public Resept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, Pasient pPasient, int pReit, String pFarge) {
 		legemiddel = pLegemiddel;
 		utskrivendeLege = pUtskrivendeLege;
-		pasientId = pPasientId;
+		pasient = pPasient;
 		reit = pReit;	
 		unikId = id.getAndIncrement();
 		farge = pFarge;
@@ -179,8 +179,8 @@ abstract class Resept{
 		return utskrivendeLege;
 	}
 	
-	public int hentPasientId() {
-		return pasientId;
+	public Pasient hentPasient() {
+		return pasient;
 	}
 	public String toString() {
 		String returnString = "\n********************\n";
@@ -196,7 +196,7 @@ abstract class Resept{
 		returnString += "Utskrivende lege: " + utskrivendeLege.hentNavnLege() + "\n";
 		returnString += "Pasient Id: " + hentId() + "\n";
 		returnString += "Reit: " + reit + "\n";
-		returnString += "Pris å betale: " + prisAaBetale() + "\n";
+		returnString += "Pris ï¿½ betale: " + prisAaBetale() + "\n";
 		
 		return returnString;
 	}
@@ -208,8 +208,8 @@ abstract class Resept{
 
 //Hvit resept, subklasse av resept
 class HvitResept extends Resept {
-	public HvitResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, int pPasientId, int pReit) {
-		super(pLegemiddel, pUtskrivendeLege, pPasientId, pReit, "Hvit");
+	public HvitResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, Pasient pPasient, int pReit) {
+		super(pLegemiddel, pUtskrivendeLege, pPasient, pReit, "Hvit");
 	}
 	
 	public String farge() {
@@ -224,8 +224,8 @@ class HvitResept extends Resept {
 class MilitaerResept extends HvitResept {
 	int rabatt = 100;
 	
-	public MilitaerResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, int pPasientId, int pReit) {
-		super(pLegemiddel, pUtskrivendeLege, pPasientId, pReit);
+	public MilitaerResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, Pasient pPasient, int pReit) {
+		super(pLegemiddel, pUtskrivendeLege, pPasient, pReit);
 		settMilitaerResept();
 	}
 	
@@ -237,8 +237,8 @@ class MilitaerResept extends HvitResept {
 class PResept extends HvitResept {
 	int rabatt = 108;
 	
-	public PResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, int pPasientId, int pReit) {
-		super(pLegemiddel, pUtskrivendeLege, pPasientId, 3);
+	public PResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, Pasient pPasient, int pReit) {
+		super(pLegemiddel, pUtskrivendeLege, pPasient, 3);
 		settPResept();
 	}
 	
@@ -256,8 +256,8 @@ class BlaaResept extends Resept {
 	int rabatt = 75;
 	
 	//Constructor for BlaaResept.
-	public BlaaResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, int pPasientId, int pReit) {
-		super(pLegemiddel, pUtskrivendeLege, pPasientId, pReit, "Blaa");
+	public BlaaResept(Legemiddel pLegemiddel, Lege pUtskrivendeLege, Pasient pPasient, int pReit) {
+		super(pLegemiddel, pUtskrivendeLege, pPasient, pReit, "Blaa");
 	}
 	
 	public String farge() {
