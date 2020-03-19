@@ -2,7 +2,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pasient {
 	
-	private static final AtomicInteger id = new AtomicInteger(0);
+	public static final AtomicInteger id = new AtomicInteger(0);
 	public String navn;
 	public String foedselsnummer;
 	public int unikId;
@@ -12,7 +12,7 @@ public class Pasient {
 		this.navn = navn;
 		this.foedselsnummer = foedselsnummer;
 		this.unikId = id.getAndIncrement();
-		Stabel stabelResepter = new Stabel<Resept>();
+		stabelResepter = new Stabel<Resept>();
 	}
 	
 	public void leggTilResept(Resept x) {
@@ -21,15 +21,15 @@ public class Pasient {
 	
 	public Stabel<Resept> hentResepter() {
 		return stabelResepter;
-		this.unikId = unikId;
-		Stabel stabelResepter = new Stabel<Resept>();
-		this.unikId = unikId;
-		Stabel stabelResepter = new Stabel<Resept>();
 	}
 	
-	public void leggTilResept() {
-		
+	//public Resept brukResept() {
+	//	stabelResepter.taAv();
+	//}
+	
+	@Override
+	public String toString() {
+		return "Navn: " + navn + " . Foedselsnummer: " + foedselsnummer + " . Unik id: " + unikId;
 	}
 	
-
 }
