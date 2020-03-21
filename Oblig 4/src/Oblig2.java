@@ -269,10 +269,13 @@ class BlaaResept extends Resept {
 	}
 }
 //Lager klassen lege
-class Lege{
+class Lege implements Comparable<Lege>{
 	String navn;
+	public Lenkeliste<Resept> utskrevedeResepter;
+	
 	public Lege(String pNavn) {
 		navn = pNavn;
+		utskrevedeResepter = new Lenkeliste<Resept>();
 	}
 	
 	public String hentNavnLege() {
@@ -284,6 +287,19 @@ class Lege{
 		returnString += "Navn paa lege: " + hentNavnLege() + "\n";
 		
 		return returnString;
+	}
+	
+	@Override
+	public int compareTo(Lege other) {
+		int sjekkTall = this.navn.compareTo(other.hentNavnLege());
+		if (sjekkTall < 0) return -1;
+		if (sjekkTall > 0) return 1;
+		return 0;
+		
+	}
+	
+	public Lenkeliste<Resept> hentListeResepter(){
+		return utskrevedeResepter;
 	}
 }
 //Subklasse av klassen lege
