@@ -303,12 +303,17 @@ class Lege implements Comparable<Lege>{
 	}
 	
 	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
-			HvitResept resept = new HvitResept(pLegemiddel, Lege, pPasient, pReit);
 			if (pLegemiddel instanceof NarkotiskLegemiddel) {
 				throw new UlovligUtskrift(Lege, pLegemiddel);
 			}
-			utskrevedeResepter.leggTilForan(resept);
-			
+			try {
+				HvitResept resept = new HvitResept(pLegemiddel, Lege, pPasient, pReit);
+				utskrevedeResepter.leggTilForan(resept);
+				return resept;
+			}
+			catch (Exception e){
+				throw new UlovligUtskrift(Lege, pLegemiddel);
+			}
 	}
 	
 	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
