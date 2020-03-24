@@ -301,6 +301,28 @@ class Lege implements Comparable<Lege>{
 	public Lenkeliste<Resept> hentListeResepter(){
 		return utskrevedeResepter;
 	}
+	
+	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+			HvitResept resept = new HvitResept(pLegemiddel, Lege, pPasient, pReit);
+			if (pLegemiddel instanceof NarkotiskLegemiddel) {
+				throw new UlovligUtskrift(Lege, pLegemiddel);
+			}
+			utskrevedeResepter.leggTilForan(resept);
+			
+	}
+	
+	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+		
+	}
+	
+	public PResept skrivMilitaerResept(Legemiddel pLegemiddel, Pasient pPasient) throws UlovligUtskrift{
+		
+	}
+	
+	public BlaaResept skrivBlaaResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+		
+	}
+	
 }
 //Subklasse av klassen lege
 class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk interface godkjenningsfritak
