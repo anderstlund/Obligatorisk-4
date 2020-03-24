@@ -8,7 +8,7 @@ public class Pasient {
 	public int unikId;
 	public Stabel<Resept> stabelResepter;
 	
-	public Pasient(String navn, String foedselsnummer, int unikId) {
+	public Pasient(String navn, String foedselsnummer) {
 		this.navn = navn;
 		this.foedselsnummer = foedselsnummer;
 		this.unikId = id.getAndIncrement();

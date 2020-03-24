@@ -302,6 +302,7 @@ class Lege implements Comparable<Lege>{
 		return utskrevedeResepter;
 	}
 	
+	//burde kommentere litt her
 	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
 			if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
 				throw new UlovligUtskrift(this, pLegemiddel);
