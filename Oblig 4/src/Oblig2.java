@@ -302,59 +302,59 @@ class Lege implements Comparable<Lege>{
 		return utskrevedeResepter;
 	}
 	
-	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Lege pLege, Pasient pPasient, int pReit) throws UlovligUtskrift{
-			if (pLegemiddel instanceof NarkotiskLegemiddel && pLege instanceof Lege) {
-				throw new UlovligUtskrift(pLege, pLegemiddel);
+	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+			if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+				throw new UlovligUtskrift(this, pLegemiddel);
 			}
 			try {
-				HvitResept resept = new HvitResept(pLegemiddel, pLege, pPasient, pReit);
+				HvitResept resept = new HvitResept(pLegemiddel, this, pPasient, pReit);
 				utskrevedeResepter.leggTilForan(resept);
 				return resept;
 			}
 			catch (Exception e){
-				throw new UlovligUtskrift(pLege, pLegemiddel);
+				throw new UlovligUtskrift(this, pLegemiddel);
 			}
 	}
 	
 	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Lege pLege, Pasient pPasient, int pReit) throws UlovligUtskrift{
-		if (pLegemiddel instanceof NarkotiskLegemiddel && pLege instanceof Lege) {
-			throw new UlovligUtskrift(pLege, pLegemiddel);
+		if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 		try {
-			MilitaerResept resept = new MilitaerResept(pLegemiddel, pLege, pPasient, pReit);
+			MilitaerResept resept = new MilitaerResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
 			return resept;
 		}
 		catch (Exception e){
-			throw new UlovligUtskrift(pLege, pLegemiddel);
+			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 	}
 	
-	public PResept skrivMilitaerResept(Legemiddel pLegemiddel, Lege pLege, Pasient pPasient) throws UlovligUtskrift{
-		if (pLegemiddel instanceof NarkotiskLegemiddel && pLege instanceof Lege) {
-			throw new UlovligUtskrift(pLege, pLegemiddel);
+	public PResept skrivMilitaerResept(Legemiddel pLegemiddel, Pasient pPasient) throws UlovligUtskrift{
+		if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 		try {
-			PResept resept = new PResept(pLegemiddel, pLege, pPasient, 3);
+			PResept resept = new PResept(pLegemiddel, this, pPasient, 3);
 			utskrevedeResepter.leggTilForan(resept);
 			return resept;
 		}
 		catch (Exception e){
-			throw new UlovligUtskrift(pLege, pLegemiddel);
+			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 	}
 	
-	public BlaaResept skrivBlaaResept(Legemiddel pLegemiddel, Lege pLege, Pasient pPasient, int pReit) throws UlovligUtskrift{
-		if (pLegemiddel instanceof NarkotiskLegemiddel && pLege instanceof Lege) {
-			throw new UlovligUtskrift(pLege, pLegemiddel);
+	public BlaaResept skrivBlaaResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+		if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 		try {
-			BlaaResept resept = new BlaaResept(pLegemiddel, pLege, pPasient, pReit);
+			BlaaResept resept = new BlaaResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
 			return resept;
 		}
 		catch (Exception e){
-			throw new UlovligUtskrift(pLege, pLegemiddel);
+			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 	}
 	
