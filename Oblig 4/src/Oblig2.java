@@ -304,7 +304,7 @@ class Lege implements Comparable<Lege>{
 	
 	//burde kommentere litt her
 	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
-			if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+			if (pLegemiddel instanceof NarkotiskLegemiddel) {
 				throw new UlovligUtskrift(this, pLegemiddel);
 			}
 			try {
@@ -318,7 +318,7 @@ class Lege implements Comparable<Lege>{
 	}
 	
 	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
-		if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+		if (pLegemiddel instanceof NarkotiskLegemiddel) {
 			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 		try {
@@ -332,7 +332,7 @@ class Lege implements Comparable<Lege>{
 	}
 	
 	public PResept skrivPResept(Legemiddel pLegemiddel, Pasient pPasient) throws UlovligUtskrift{
-		if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+		if (pLegemiddel instanceof NarkotiskLegemiddel) {
 			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 		try {
@@ -346,7 +346,7 @@ class Lege implements Comparable<Lege>{
 	}
 	
 	public BlaaResept skrivBlaaResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
-		if (pLegemiddel instanceof NarkotiskLegemiddel && this instanceof Lege) {
+		if (pLegemiddel instanceof NarkotiskLegemiddel) {
 			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 		try {
@@ -358,7 +358,6 @@ class Lege implements Comparable<Lege>{
 			throw new UlovligUtskrift(this, pLegemiddel);
 		}
 	}
-	
 }
 //Subklasse av klassen lege
 class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk interface godkjenningsfritak
