@@ -8,9 +8,13 @@ public class Test {
 		Spesialist drHermann = new Spesialist("Dr. Hermann", 123456789);
 		
 		drHermann.skrivMillitaerResept(nLegemiddel, pasient0, 0);
+		drHermann.skrivMillitaerResept(nLegemiddel, pasient0, 80);
 		drLund.skrivBlaaResept(vLegemiddel, pasient0, 9);
+		drLund.skrivMillitaerResept(nLegemiddel, pasient0, 69);
 		drLund.skrivHvitResept(vLegemiddel, pasient0, 3);
 		drLund.skrivPResept(vLegemiddel, pasient0);
+		
+		System.out.println(drHermann.hentListeResepter());
 		
 		System.out.println(drLund.hentListeResepter());
 		

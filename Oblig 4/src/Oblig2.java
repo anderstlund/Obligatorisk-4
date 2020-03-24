@@ -381,6 +381,52 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 		
 		return returnString;
 	}
+	
+	@Override
+	public HvitResept skrivHvitResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+		try {
+			HvitResept resept = new HvitResept(pLegemiddel, this, pPasient, pReit);
+			utskrevedeResepter.leggTilForan(resept);
+			return resept;
+		}
+		catch (Exception e){
+			throw new UlovligUtskrift(this, pLegemiddel);
+		}
+	}
+	
+	@Override
+	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+		try {
+			MilitaerResept resept = new MilitaerResept(pLegemiddel, this, pPasient, pReit);
+			utskrevedeResepter.leggTilForan(resept);
+			return resept;
+		}
+		catch (Exception e){
+			throw new UlovligUtskrift(this, pLegemiddel);
+		}
+	}
+	@Override
+	public PResept skrivPResept(Legemiddel pLegemiddel, Pasient pPasient) throws UlovligUtskrift{
+		try {
+			PResept resept = new PResept(pLegemiddel, this, pPasient, 3);
+			utskrevedeResepter.leggTilForan(resept);
+			return resept;
+		}
+		catch (Exception e){
+			throw new UlovligUtskrift(this, pLegemiddel);
+		}
+	}
+	@Override
+	public BlaaResept skrivBlaaResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+		try {
+			BlaaResept resept = new BlaaResept(pLegemiddel, this, pPasient, pReit);
+			utskrevedeResepter.leggTilForan(resept);
+			return resept;
+		}
+		catch (Exception e){
+			throw new UlovligUtskrift(this, pLegemiddel);
+		}
+	}
 }
 
 
