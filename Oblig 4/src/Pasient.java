@@ -2,14 +2,14 @@ public class Pasient {
 	
 	public String navn;
 	public String foedselsnummer;
-	private int unikIid = 0;
+	private int unikId = 0;
 	private static int teller = 0;
 	public Stabel<Resept> stabelResepter;
 	
 	public Pasient(String navn, String foedselsnummer) {
 		this.navn = navn;
 		this.foedselsnummer = foedselsnummer;
-		unikIid = unikIid + teller;
+		unikId = unikId + teller;
 		teller++;
 		stabelResepter = new Stabel<Resept>();
 	}
@@ -31,7 +31,7 @@ public class Pasient {
 	}
 	
 	public int hentIid() {
-		return unikIid;
+		return unikId;
 	}
 	
 	//public Resept brukResept() {
