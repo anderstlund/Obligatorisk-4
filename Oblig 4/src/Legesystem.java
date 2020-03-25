@@ -21,7 +21,7 @@ public class Legesystem{
 				System.out.println(navn + foedselsnr);
 				
 				
-				String[] deler = skan.nextLine().split("");
+				String[] deler = linje.split("");
 				String nr2 = deler[0].strip();
 				nr1 = nr2;
 				System.out.println(nr1);
