@@ -27,9 +27,11 @@ public class Test {
 		Legesystem system = new Legesystem();
 		try {
 			system.lesFraFil("Testeks.txt");
+			System.out.println(system.hentListePasienter());
 		} catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException: Ingen fil");
 		}
+		
 		
 		
 	}
