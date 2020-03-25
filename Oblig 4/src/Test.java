@@ -23,5 +23,9 @@ public class Test {
 		
 		System.out.println(drLund.hentListeResepter());
 		
+		Legesystem system = new Legesystem();
+		system.lesFraFil("Testeks.txt");
+		
+		
 	}
 }
