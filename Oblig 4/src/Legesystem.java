@@ -5,6 +5,17 @@ import java.io.FileNotFoundException;
 public class Legesystem{
 	
 	public File fil;
+	public Lenkeliste<Pasient> listePasienter;
+	public Lenkeliste<Legemiddel> listeLegemidler;
+	public Lenkeliste<Lege> listeLege;
+	public Lenkeliste<Resept> listeResept;
+	
+	public Legesystem() {
+		listePasienter = new Lenkeliste<Pasient>();
+		listeLegemidler = new Lenkeliste<Legemiddel>();
+		listeLege = new Lenkeliste<Lege>();
+		listeResept = new Lenkeliste<Resept>();
+	}
 	
 	public void lesFraFil(String a) throws FileNotFoundException { //String a: variabel for aa ta inn filen (gjoeres i test.java)
 		fil = new File(a);
@@ -19,13 +30,16 @@ public class Legesystem{
 				while(!scan.hasNext("#")) {
 				
 					linje = scan.nextLine();
+					String[] ord = linje.split(",");
+					String navn = ord[0];
+					String foedselsnr = ord[1];
+					Pasient obj = new Pasient(navn, foedselsnr);
+					listePasienter.leggTilForan(obj);
 					System.out.println(linje);
 					
 				}	
 				System.out.println(" ");
 			}
-			
-			
 			
 			else if(kontrollOrd[1].equals("Legemidler")) {
 				while(!scan.hasNext("#")) {
@@ -37,14 +51,11 @@ public class Legesystem{
 				System.out.println(" ");
 			}
 			
-			
 			else if(kontrollOrd[1].equals("Leger")) {
 				while(!scan.hasNext("#")) {
 					
 					linje = scan.nextLine();
 					System.out.println(linje);
-					
-					
 				}	
 				System.out.println(" ");
 			}
@@ -54,11 +65,8 @@ public class Legesystem{
 					
 					linje = scan.nextLine();
 					System.out.println(linje);
-					
-					
 				}	
 			}
-			
 			
 			
 			/*String linje = scan.nextLine();
@@ -78,7 +86,23 @@ public class Legesystem{
 				
 				
 			//}
+			}
 		}
 
+	public Lenkeliste<Pasient> hentListePasienter() {
+		return listePasienter;
 	}
+	
+	public Lenkeliste<Legemiddel> hentListeLegemidler(){
+		return listeLegemidler;
+	}
+	
+	public Lenkeliste<Lege> hentListeLeger(){
+		return listeLege;
+	}
+	
+	public Lenkeliste<Resept> hentListeResepter(){
+		return listeResept;
+	}
+		
 }
