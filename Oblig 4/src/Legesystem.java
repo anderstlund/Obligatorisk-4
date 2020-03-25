@@ -12,22 +12,25 @@ public class Legesystem{
 		try {
 			skan = new Scanner(fil);
 			skan.nextLine();
-			while (skan.hasNext()) {
+			String nr1 = "";
+			while (skan.hasNext() && !nr1.equals("#")) {
 				String linje = skan.nextLine();
 				String[] ord = linje.split(",");
 				String navn = ord[0];
 				String foedselsnr = ord[1];
 				System.out.println(navn + foedselsnr);
 				
-				String[] deler = navn.split("");
-				String nr1 = deler[0].strip();
+				
+				String[] deler = skan.nextLine().split("");
+				String nr2 = deler[0].strip();
+				nr1 = nr2;
 				System.out.println(nr1);
 				
-				if (nr1.equals("#")) {
-					skan.nextLine();
+				//if (nr1.equals("#")) {
+					//System.out.println(skan.nextLine());
 					
 					
-				}
+				//}
 			}
 		}
 		catch (FileNotFoundException e) {
