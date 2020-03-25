@@ -13,18 +13,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 //Lager klassen legemiddel
 abstract class Legemiddel{
-	private static final AtomicInteger id = new AtomicInteger();
 	String navn;
 	double pris;
 	double virkemiddel;
-	int unikId;
+	private int unikId = 0;
+	private static int teller = 0;
 	String legemiddelType;
 	
 	public Legemiddel(String pNavn, double pPris, double pVirkemiddel, String pLegemiddelType) {
 		navn = pNavn;
 		pris = pPris;
 		virkemiddel = pVirkemiddel;
-		unikId = id.getAndIncrement();
+		unikId = unikId + teller;
+		teller++;
 		legemiddelType = pLegemiddelType;
 	}
 	
@@ -115,19 +116,14 @@ class VanedannendeLegemiddel extends Legemiddel{
 }
 
 
-
-
-
-
-
 //Lager klassen resept
 abstract class Resept{
-	private static final AtomicInteger id = new AtomicInteger(0);
 	Legemiddel legemiddel;
 	Lege utskrivendeLege;
 	Pasient pasient;
 	int reit;
-	int unikId;
+	private int unikId = 0;
+	private static int teller = 0;
 	String farge;
 	boolean militaerResept = false;
 	boolean pResept = false;
@@ -137,7 +133,8 @@ abstract class Resept{
 		utskrivendeLege = pUtskrivendeLege;
 		pasient = pPasient;
 		reit = pReit;	
-		unikId = id.getAndIncrement();
+		unikId = unikId + teller;
+		teller++;
 		farge = pFarge;
 	}
 	//Sjekker om resepten er brukt opp

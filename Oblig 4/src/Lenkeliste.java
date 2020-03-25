@@ -47,7 +47,7 @@ public class Lenkeliste<T> implements Liste<T> {
 				temp = temp.neste;
 			}
 			if(pos == 0) {
-				leggTilForan(x); //Hvis posisjonen hvor ny node skal legges til er 0, kan vi kalle på leggTilForan()
+				leggTilForan(x); //Hvis posisjonen hvor ny node skal legges til er 0, kan vi kalle pï¿½ leggTilForan()
 			}
 			else { 
 				nyNode.neste = temp.neste; //Setter ny node paa riktig posisjon, og skyver neste element bakover i listen
@@ -117,7 +117,7 @@ public class Lenkeliste<T> implements Liste<T> {
 	}
 
 	@Override
-	public int stoerrelse() throws UgyldigListeIndeks { //sjekker stoerrelsen på lista
+	public int stoerrelse() throws UgyldigListeIndeks { //sjekker stoerrelsen pï¿½ lista
 		
 		try {
 			int i = 0;
@@ -199,8 +199,6 @@ public class Lenkeliste<T> implements Liste<T> {
 		} catch (NullPointerException e) {
 			throw new UgyldigListeIndeks(0);
 		}
-		
-	
 	}
 
 	@Override
