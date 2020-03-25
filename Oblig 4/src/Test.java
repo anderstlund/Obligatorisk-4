@@ -9,7 +9,8 @@ public class Test {
 		Pasient pasient1 = new Pasient("Skrtveig", "123321");
 		System.out.println(pasient1);
 		System.out.println(pasient0);
-		
+		System.out.println(vLegemiddel);
+		System.out.println(nLegemiddel);
 		
 		drHermann.skrivMillitaerResept(nLegemiddel, pasient0, 0);
 		drHermann.skrivMillitaerResept(nLegemiddel, pasient0, 80);

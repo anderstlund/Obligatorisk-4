@@ -191,10 +191,10 @@ abstract class Resept{
 		}
 		returnString += "Legemiddel: " + legemiddel.hentNavn() + "\n";
 		returnString += "Utskrivende lege: " + utskrivendeLege.hentNavnLege() + "\n";
-		returnString += "Pasient Id: " + hentId() + "\n";
+		returnString += "Pasient Id: " + hentId() + "\n"; //** denne er det noe feil med, må endres til hentPasient() ??
 		returnString += "Reit: " + reit + "\n";
 		returnString += "Pris � betale: " + prisAaBetale() + "\n";
-		
+															//legge til en toString som skriver unikId med hentId() istedenfor
 		return returnString;
 	}
 	
