@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 
 public class Test {
 	public static void main(String[] args) throws UlovligUtskrift {
@@ -24,7 +25,11 @@ public class Test {
 		System.out.println(drLund.hentListeResepter());
 		
 		Legesystem system = new Legesystem();
-		system.lesFraFil("Testeks.txt");
+		try {
+			system.lesFraFil("Testeks.txt");
+		} catch (FileNotFoundException e) {
+			System.out.println("FileNotFoundException: Ingen fil");
+		}
 		
 		
 	}
