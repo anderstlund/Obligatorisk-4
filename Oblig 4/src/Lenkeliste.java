@@ -106,10 +106,10 @@ public class Lenkeliste<T> implements Liste<T> {
 	@Override
 	public String toString() throws UgyldigListeIndeks { //toString, brukt for aa teste kode
 		
-		String returnString = "Lenkeliste: ";
+		String returnString = "Lenkeliste: \n";
 		Node temp = start;
-		while(temp.neste != null) {
-			returnString += temp.data.toString() + ", ";
+		while(temp != null) {
+			returnString += temp.data.toString();
 			temp = temp.neste;
 		}
 		

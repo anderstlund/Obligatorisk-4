@@ -40,7 +40,12 @@ public class Pasient {
 	
 	@Override
 	public String toString() {
-		return "Navn: " + navn + " . Foedselsnummer: " + foedselsnummer + " . Unik id: " + hentIid();
+		String returnString;
+		
+		returnString = "Navn: " + hentNavn() + "\n";
+		returnString = "Foedselsnummer: " + hentFoedselsnummer() + "\n";
+		returnString = "Unik Id: " + hentIid() + "\n";
+		return returnString;
 	}
 	
 }

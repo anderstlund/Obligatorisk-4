@@ -7,13 +7,13 @@ public class Legesystem{
 	public File fil;
 	public Lenkeliste<Pasient> listePasienter;
 	public Lenkeliste<Legemiddel> listeLegemidler;
-	public Lenkeliste<Lege> listeLege; //Må kanskje gjøre sortert
+	public SortertLenkeliste<Lege> listeLege; //Må kanskje gjøre sortert
 	public Lenkeliste<Resept> listeResept;
 	
 	public Legesystem() {
 		listePasienter = new Lenkeliste<Pasient>();
 		listeLegemidler = new Lenkeliste<Legemiddel>();
-		listeLege = new Lenkeliste<Lege>(); //kanksje gjøres sortert
+		listeLege = new SortertLenkeliste<Lege>(); //kanksje gjøres sortert
 		listeResept = new Lenkeliste<Resept>();
 	}
 	
@@ -81,11 +81,11 @@ public class Legesystem{
 					int type = Integer.parseInt(ord[1]);
 					if (type == 0) {
 						Lege obj = new Lege(navn);
-						listeLege.leggTilForan(obj); //kanskje implimentere sortert lenkeliste
+						listeLege.leggTil(obj); //kanskje implimentere sortert lenkeliste
 					}
 					else if (type != 0){
 						Spesialist obj = new Spesialist(navn, type);
-						listeLege.leggTilForan(obj); //kanskje implimentere sortert lenkeliste
+						listeLege.leggTil(obj); //kanskje implimentere sortert lenkeliste
 					}
 					System.out.println(linje);
 				}	

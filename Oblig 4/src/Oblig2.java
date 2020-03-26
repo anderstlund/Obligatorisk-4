@@ -55,7 +55,7 @@ abstract class Legemiddel{
 	public String toString() {
 		String returnString;
 		
-		returnString = "\n********************\n";
+		returnString = "\n\n";
 		returnString += "Legemiddel: " + "\n";
 		returnString += "Id: " + hentId() + "\n"; 
 		returnString += "Navn: " + hentNavn() + "\n";
@@ -279,9 +279,7 @@ class Lege implements Comparable<Lege>{
 	}
 	
 	public String toString() {
-		String returnString = "\n********************\n";
-		returnString += "Navn paa lege: " + hentNavnLege() + "\n";
-		
+		String returnString = "Navn: " + hentNavnLege() + "\n";
 		return returnString;
 	}
 	
@@ -371,10 +369,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 	}
 	
 	public String toString() {
-		String returnString = "\n********************\n";
-		returnString += "Navn paa lege: " + hentNavnLege() + "\n";
-		returnString += "KontrollId: " + hentKontrollId() + "\n";
-		
+		String returnString = "Navn: " + hentNavnLege() + ". KontrollId: " + hentKontrollId() + "\n";
 		return returnString;
 	}
 	
