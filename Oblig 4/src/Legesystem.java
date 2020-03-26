@@ -107,6 +107,7 @@ public class Legesystem{
 						reit = Reit;
 					} catch (ArrayIndexOutOfBoundsException ignored){}
 					
+					
 					System.out.println(linje);
 				}	
 			}
