@@ -43,8 +43,8 @@ public class Pasient {
 		String returnString;
 		
 		returnString = "Navn: " + hentNavn() + "\n";
-		returnString = "Foedselsnummer: " + hentFoedselsnummer() + "\n";
-		returnString = "Unik Id: " + hentIid() + "\n";
+		returnString += "Foedselsnummer: " + hentFoedselsnummer() + "\n";
+		returnString += "Unik Id: " + hentIid() + "\n";
 		return returnString;
 	}
 	
