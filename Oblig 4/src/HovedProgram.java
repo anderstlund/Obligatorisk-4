@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class HovedProgram<T> extends LenkelisteIterator<T>{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UlovligUtskrift {
 		
 		Legesystem system = new Legesystem();
 		try {
