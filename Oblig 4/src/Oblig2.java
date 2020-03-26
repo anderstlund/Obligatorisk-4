@@ -55,13 +55,13 @@ abstract class Legemiddel{
 	public String toString() {
 		String returnString;
 		
-		returnString = "\n\n";
+		returnString = "\n";
 		returnString += "Legemiddel: " + "\n";
 		returnString += "Id: " + hentId() + "\n"; 
 		returnString += "Navn: " + hentNavn() + "\n";
 		returnString += "Virkemiddel: " + hentVirkemiddel() + "\n";
 		returnString += "Type: " + hentType() + "\n";
-		returnString += "Pris: " + hentPris() + "\n";
+		returnString += "Pris: " + hentPris();
 		
 		
 		return returnString;
