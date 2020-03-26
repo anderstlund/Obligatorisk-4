@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Legesystem{
+public class Legesystem {
 	
 	public File fil;
 	public Lenkeliste<Pasient> listePasienter;
@@ -97,7 +97,7 @@ public class Legesystem{
 					
 					linje = scan.nextLine();
 					String[] ord = linje.split(",");
-					String unikIdLegemiddel = ord[0];
+					int unikIdLegemiddel = Integer.parseInt(ord[0]);
 					String navnLege = ord[1];
 					int unikeIdPasient = Integer.parseInt(ord[2]);
 					String typeResept = ord[3];
@@ -106,6 +106,13 @@ public class Legesystem{
 						int Reit = Integer.parseInt(ord[4]);
 						reit = Reit;
 					} catch (ArrayIndexOutOfBoundsException ignored){}
+					int i = 0;
+					while (i <= listeLegemidler.stoerrelse()) {
+						if(listeLegemidler.hent(i).hentId() == unikIdLegemiddel) {
+							Legemiddel tempResept = listeLegemidler.hent(i);
+						}
+						i++;
+					}
 					
 					
 					System.out.println(linje);
