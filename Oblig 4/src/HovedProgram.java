@@ -1,9 +1,54 @@
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class HovedProgram {
 
 	public static void main(String[] args) {
 		
-		Lege nyLege = new Lege("Dangfart T�nnesen"); //Oppretter en lege
+		Legesystem system = new Legesystem();
+		try {
+			system.lesFraFil("Testeks.txt");
+			System.out.println(system.hentListePasienter());
+			//System.out.println(system.hentListeLegemidler());
+			System.out.println(system.hentListeLeger());
+		} catch (FileNotFoundException e) {
+			System.out.println("FileNotFoundException: Ingen fil");
+		}
+		
+		System.out.println(" ");
+		System.out.println("Hovedmeny:\n1: Leger\n2: Pasienter\n3: Resepter\n4: Legemidler\n0: Avslutt");
+		
+		
+		Scanner scan = new Scanner(System.in);
+		int input = scan.nextInt();
+		
+		while(input != 0) {
+			System.out.println("Bruh");
+			input = scan.nextInt();
+		}
+		
+	
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*Lege nyLege = new Lege("Dangfart T�nnesen"); //Oppretter en lege
 		Spesialist spesialist = new Spesialist("Knut Knudsen", 2); //Oppretter spesialist
 		//toString: skriver ut
 		System.out.println(nyLege.toString());
@@ -29,7 +74,7 @@ public class HovedProgram {
 		System.out.println(hvitResept.toString());
 		System.out.println(militaerResept.toString());
 		System.out.println(pResept.toString());
-		System.out.println(blaaResept.toString());
+		System.out.println(blaaResept.toString());*/
 		
 	}
 
