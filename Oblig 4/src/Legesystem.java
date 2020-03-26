@@ -17,7 +17,7 @@ public class Legesystem{
 		listeResept = new Lenkeliste<Resept>();
 	}
 	
-	public void lesFraFil(String a) throws FileNotFoundException { //String a: variabel for aa ta inn filen (gjoeres i test.java)
+	public void lesFraFil(String a) throws FileNotFoundException, UlovligUtskrift { //String a: variabel for aa ta inn filen (gjoeres i test.java)
 		fil = new File(a);
 		Scanner scan = new Scanner(fil);
 		
@@ -107,11 +107,38 @@ public class Legesystem{
 						reit = Reit;
 					} catch (ArrayIndexOutOfBoundsException ignored){}
 					int i = 0;
+					Lege tempLege = null;
+					Legemiddel tempResept = null;
+					Pasient tempPasient = null;
 					while (i <= listeLegemidler.stoerrelse()) {
 						if(listeLegemidler.hent(i).hentId() == unikIdLegemiddel) {
-							Legemiddel tempResept = listeLegemidler.hent(i);
+							tempResept = listeLegemidler.hent(i);
 						}
 						i++;
+					}
+					while (i <= listeLege.stoerrelse()) {
+						if(listeLege.hent(i).hentNavnLege().equals(navnLege)) {
+							tempLege = listeLege.hent(i);
+						}
+						i++;
+					}
+					while (i <= listePasienter.stoerrelse()) {
+						if(listePasienter.hent(i).hentIid() == unikeIdPasient) {
+							tempPasient = listePasienter.hent(i);
+						}
+						i++;
+					}
+					if (typeResept.equals("hvit")) {
+						tempLege.skrivHvitResept(tempResept, tempPasient, reit);
+					}
+					if (typeResept.equals("blaa")) {
+						
+					}
+					if (typeResept.equals("militaer")) {
+						
+					}
+					if(typeResept.equals("p")) {
+						
 					}
 					
 					
