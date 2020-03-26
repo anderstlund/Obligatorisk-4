@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class HovedProgram {
+public class HovedProgram<T> extends LenkelisteIterator<T>{
 
 	public static void main(String[] args) {
 		
