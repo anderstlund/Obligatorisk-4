@@ -42,9 +42,9 @@ public class Pasient {
 	public String toString() {
 		String returnString;
 		
-		returnString = "Navn: " + hentNavn() + "\n";
+		returnString = hentNavn() + "\n";
 		returnString += "Foedselsnummer: " + hentFoedselsnummer() + "\n";
-		returnString += "Unik Id: " + hentIid() + "\n";
+		returnString += "Unik Pasient Id: " + hentIid() + "\n";
 		return returnString;
 	}
 	

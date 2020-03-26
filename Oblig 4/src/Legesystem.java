@@ -35,7 +35,7 @@ public class Legesystem {
 					String foedselsnr = ord[1];
 					Pasient obj = new Pasient(navn, foedselsnr);
 					listePasienter.leggTilForan(obj);
-					System.out.println(linje);
+					//System.out.println(linje);
 					
 				}	
 				System.out.println(" ");
@@ -67,7 +67,7 @@ public class Legesystem {
 						VanligLegemiddel obj = new VanligLegemiddel(navn, pris, virkestoff);
 						listeLegemidler.leggTil(obj);
 					}
-					System.out.println(linje);
+					//System.out.println(linje);
 				}
 				System.out.println(" ");
 			}
@@ -87,7 +87,7 @@ public class Legesystem {
 						Spesialist obj = new Spesialist(navn, type);
 						listeLege.leggTil(obj); //kanskje implimentere sortert lenkeliste
 					}
-					System.out.println(linje);
+					//System.out.println(linje);
 				}	
 				System.out.println(" ");
 			}
@@ -110,39 +110,39 @@ public class Legesystem {
 					Lege tempLege = null;
 					Legemiddel tempResept = null;
 					Pasient tempPasient = null;
-					while (i <= listeLegemidler.stoerrelse()) {
+					while (i < listeLegemidler.stoerrelse()) {
 						if(listeLegemidler.hent(i).hentId() == unikIdLegemiddel) {
 							tempResept = listeLegemidler.hent(i);
 						}
 						i++;
 					}
-					while (i <= listeLege.stoerrelse()) {
-						if(listeLege.hent(i).hentNavnLege().equals(navnLege)) {
-							tempLege = listeLege.hent(i);
+					int e = 0;
+					while (e < listeLege.stoerrelse()) {
+						if(listeLege.hent(e).hentNavnLege().equals(navnLege)) {
+							tempLege = listeLege.hent(e);
 						}
-						i++;
+						e++;
 					}
-					while (i <= listePasienter.stoerrelse()) {
-						if(listePasienter.hent(i).hentIid() == unikeIdPasient) {
-							tempPasient = listePasienter.hent(i);
+					int b = 0;
+					while (b < listePasienter.stoerrelse()) {
+						if(listePasienter.hent(b).hentIid() == unikeIdPasient) {
+							tempPasient = listePasienter.hent(b);
 						}
-						i++;
+						b++;
 					}
 					if (typeResept.equals("hvit")) {
-						tempLege.skrivHvitResept(tempResept, tempPasient, reit);
+						listeResept.leggTilForan(tempLege.skrivHvitResept(tempResept, tempPasient, reit));
 					}
 					if (typeResept.equals("blaa")) {
-						
+						listeResept.leggTilForan(tempLege.skrivBlaaResept(tempResept, tempPasient, reit));
 					}
-					if (typeResept.equals("militaer")) {
-						
+					if (typeResept.equals("millitaer")) { //millitær med en eller to l'er i testfil
+						listeResept.leggTilForan(tempLege.skrivMillitaerResept(tempResept, tempPasient, reit)); //to l'er
 					}
 					if(typeResept.equals("p")) {
-						
+						listeResept.leggTilForan(tempLege.skrivPResept(tempResept, tempPasient));
 					}
-					
-					
-					System.out.println(linje);
+					//System.out.println(linje);
 				}	
 			}
 		}
