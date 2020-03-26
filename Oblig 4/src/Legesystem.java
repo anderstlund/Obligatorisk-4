@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Legesystem{
+public class Legesystem {
 	
 	public File fil;
 	public Lenkeliste<Pasient> listePasienter;
