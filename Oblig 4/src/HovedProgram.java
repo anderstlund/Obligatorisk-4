@@ -133,7 +133,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							while (e < system.hentListeLeger().stoerrelse()) {
 								if(navn.equals(system.hentListeLeger().hent(e).hentNavnLege())) {
 									tempLege = system.hentListeLeger().hent(e);
-									System.out.println(navn);
+									//System.out.println(navn);
 									break;
 								}
 								e++;
@@ -152,7 +152,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							while (i < system.hentListePasienter().stoerrelse()) {
 								if(system.hentListePasienter().hent(i).hentNavn().equals(navnPasient)) {
 									tempPasient = system.hentListePasienter().hent(i);
-									System.out.println(navnPasient);
+									//System.out.println(navnPasient);
 								}
 								i++;
 							}	
@@ -175,7 +175,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -207,7 +207,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -239,7 +239,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -271,7 +271,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -300,7 +300,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							while (e < system.hentListeLeger().stoerrelse()) {
 								if(navn.equals(system.hentListeLeger().hent(e).hentNavnLege())) {
 									tempLege = system.hentListeLeger().hent(e);
-									System.out.println(navn);
+									//System.out.println(navn);
 									break;
 								}
 								e++;
@@ -323,7 +323,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							while (i < system.hentListePasienter().stoerrelse()) {
 								if(system.hentListePasienter().hent(i).hentNavn().equals(navnPasient)) {
 									tempPasient = system.hentListePasienter().hent(i);
-									System.out.println(navnPasient);
+									//System.out.println(navnPasient);
 								}
 								i++;
 							}	
@@ -346,7 +346,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -375,7 +375,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -404,7 +404,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -433,7 +433,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 								while (j < system.hentListeLegemidler().stoerrelse()) {
 									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
 										tempLegemiddel = system.hentListeLegemidler().hent(j);
-										System.out.println(navnLegemiddel);
+										//System.out.println(navnLegemiddel);
 									}
 									j++;
 								}	
@@ -457,7 +457,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							input = scan.nextInt();
 							if(input == 1) {
 								String navn = scan.nextLine();
-								System.out.println("Navn pï¿½ legemiddel: ");
+								System.out.println("Navn paa legemiddel: ");
 								navn = scan.nextLine();
 								
 								
@@ -477,7 +477,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							
 							else if(input == 2) {
 								String navn = scan.nextLine();
-								System.out.println("Navn pï¿½ legemiddel: ");
+								System.out.println("Navn paa legemiddel: ");
 								navn = scan.nextLine();
 								
 								
@@ -499,7 +499,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							}
 							else if(input == 3) {
 								String navn = scan.nextLine();
-								System.out.println("Navn pï¿½ legemiddel: ");
+								System.out.println("Navn paa legemiddel: ");
 								navn = scan.nextLine();
 								
 								
@@ -679,7 +679,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							
 						}
 					catch (NoSuchElementException e) {
-						System.out.println("Ingen elementer å skrive ut til listen");
+						System.out.println("Ingen elementer ï¿½ skrive ut til listen");
 						}
 						
 						
@@ -695,7 +695,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							
 						}
 					catch (NoSuchElementException e) {
-						System.out.println("Ingen elementer å skrive ut til listen");
+						System.out.println("Ingen elementer ï¿½ skrive ut til listen");
 						}
 						
 						out.println("# Leger (navn,kontrollid / 0 hvis vanlig lege)");
@@ -707,7 +707,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							
 						}
 					catch (NoSuchElementException e) {
-						System.out.println("Ingen elementer å skrive ut til listen");
+						System.out.println("Ingen elementer ï¿½ skrive ut til listen");
 						}
 						
 						out.println("# Resepter (legemiddelNummer,legeNavn,pasientID,type,[reit])");
@@ -719,7 +719,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							
 						}
 					catch (NoSuchElementException e) {
-						System.out.println("Ingen elementer å skrive ut til listen");
+						System.out.println("Ingen elementer ï¿½ skrive ut til listen");
 						}
 
 						out.close();
