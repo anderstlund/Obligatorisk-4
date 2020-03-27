@@ -311,7 +311,7 @@ class Lege implements Comparable<Lege>{
 			}
 	}
 	
-	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+	public MilitaerResept skrivMilitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
 		if (pLegemiddel instanceof NarkotiskLegemiddel) {
 			throw new UlovligUtskrift(this, pLegemiddel);
 		}
@@ -386,7 +386,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 	}
 	
 	@Override
-	public MilitaerResept skrivMillitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
+	public MilitaerResept skrivMilitaerResept(Legemiddel pLegemiddel, Pasient pPasient, int pReit) throws UlovligUtskrift{
 		try {
 			MilitaerResept resept = new MilitaerResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);

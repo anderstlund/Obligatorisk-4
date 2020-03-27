@@ -137,7 +137,7 @@ public class Legesystem {
 						listeResept.leggTilForan(tempLege.skrivBlaaResept(tempResept, tempPasient, reit));
 					}
 					if (typeResept.equals("millitaer")) { //millitær med en eller to l'er i testfil
-						listeResept.leggTilForan(tempLege.skrivMillitaerResept(tempResept, tempPasient, reit)); //to l'er
+						listeResept.leggTilForan(tempLege.skrivMilitaerResept(tempResept, tempPasient, reit)); //to l'er
 					}
 					if(typeResept.equals("p")) {
 						listeResept.leggTilForan(tempLege.skrivPResept(tempResept, tempPasient));

@@ -16,7 +16,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 		}
 		
 		
-		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n0: Avslutt";
+		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n3: Bruk resept\n0: Avslutt";
 		System.out.println(" ");
 		System.out.println(hovedmeny);
 		
@@ -63,7 +63,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 				input = scan.nextInt();
 				}
 			
-			if(input == 2) {
+			else if(input == 2) {
 				while(input != 0) {
 					System.out.println("1: Legg til lege\n2: Legg til pasient\n3: Lag ny resept\n4: Legg til legemiddel\n0: Tilbake ");
 					input = scan.nextInt();
@@ -112,65 +112,455 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 						Pasient nyPasient = new Pasient(navn, fnr);
 						system.hentListePasienter().leggTilForan(nyPasient);
 						
+					}	
+					
+					else if(input == 3) {
+						Lege tempLege = null;
+						System.out.println("1: Lege\n2: Spesialist");
+						input = scan.nextInt();
+						
+						if(input == 1) {
+							String navn = scan.nextLine();							
+							System.out.println("Navn: ");
+							navn = scan.nextLine();
+							
+							
+							int e = 0;
+							while (e < system.hentListeLeger().stoerrelse()) {
+								if(navn.equals(system.hentListeLeger().hent(e).hentNavnLege())) {
+									tempLege = system.hentListeLeger().hent(e);
+									System.out.println(navn);
+									break;
+								}
+								e++;
+							}
+							if(tempLege == null) {
+								System.out.println("Denne legen eksisterer ikke i databasen.");
+								break;
+							}
+							
+							Pasient tempPasient = null;		
+							System.out.println("Navn pasient: ");
+							String navnPasient = scan.nextLine();
+							
+							
+							int i = 0;
+							while (i < system.hentListePasienter().stoerrelse()) {
+								if(system.hentListePasienter().hent(i).hentNavn().equals(navnPasient)) {
+									tempPasient = system.hentListePasienter().hent(i);
+									System.out.println(navnPasient);
+								}
+								i++;
+							}	
+							if(tempPasient == null) {
+								System.out.println("Denne pasienten eksisterer ikke i databasen.");
+								break;
+							}
+							
+							System.out.println("Type resept:\n1: Hvit\n2: Blaa\n3: Militaer\n4: P-resept");
+							input = scan.nextInt();
+							
+							if(input == 1) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								if(tempLegemiddel instanceof NarkotiskLegemiddel) {
+									System.out.println("Lege er ikke spesialist og kan derfor ikke skrive ut narkotiske legemidler.");
+									break;
+								}
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								System.out.println("Antall reit: ");
+								input = scan.nextInt();
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input));
+							}
+							
+							else if(input == 2) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								if(tempLegemiddel instanceof NarkotiskLegemiddel) {
+									System.out.println("Lege er ikke spesialist og kan derfor ikke skrive ut narkotiske legemidler.");
+									break;
+								}
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								System.out.println("Antall reit: ");
+								input = scan.nextInt();
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivBlaaResept(tempLegemiddel, tempPasient, input));	
+							}
+							
+							else if(input == 3) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								if(tempLegemiddel instanceof NarkotiskLegemiddel) {
+									System.out.println("Lege er ikke spesialist og kan derfor ikke skrive ut narkotiske legemidler.");
+									break;
+								}
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								System.out.println("Antall reit: ");
+								input = scan.nextInt();
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivMilitaerResept(tempLegemiddel, tempPasient, input));
+							}
+							
+							else if(input == 4) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								if(tempLegemiddel instanceof NarkotiskLegemiddel) {
+									System.out.println("Lege er ikke spesialist og kan derfor ikke skrive ut narkotiske legemidler.");
+									break;
+								}
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivPResept(tempLegemiddel, tempPasient));
+							}
+						}
+						else if (input == 2) { //Spesialist
+							String navn = scan.nextLine();							
+							System.out.println("Navn: ");
+							navn = scan.nextLine();
+							
+							
+							int e = 0;
+							while (e < system.hentListeLeger().stoerrelse()) {
+								if(navn.equals(system.hentListeLeger().hent(e).hentNavnLege())) {
+									tempLege = system.hentListeLeger().hent(e);
+									System.out.println(navn);
+									break;
+								}
+								e++;
+							}
+							if(tempLege == null) {
+								System.out.println("Denne legen eksisterer ikke i databasen.");
+								break;
+							}
+							if(!(tempLege instanceof Spesialist)) {
+								System.out.println("Denne legen er ikke en spesialist.");
+								break;
+							}
+							
+							Pasient tempPasient = null;		
+							System.out.println("Navn pasient: ");
+							String navnPasient = scan.nextLine();
+							
+							
+							int i = 0;
+							while (i < system.hentListePasienter().stoerrelse()) {
+								if(system.hentListePasienter().hent(i).hentNavn().equals(navnPasient)) {
+									tempPasient = system.hentListePasienter().hent(i);
+									System.out.println(navnPasient);
+								}
+								i++;
+							}	
+							if(tempPasient == null) {
+								System.out.println("Denne pasienten eksisterer ikke i databasen.");
+								break;
+							}
+							
+							System.out.println("Type resept:\n1: Hvit\n2: Blaa\n3: Militaer\n4: P-resept");
+							input = scan.nextInt();
+							
+							if(input == 1) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								System.out.println("Antall reit: ");
+								input = scan.nextInt();
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input));
+							}
+							
+							else if(input == 2) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								System.out.println("Antall reit: ");
+								input = scan.nextInt();
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivBlaaResept(tempLegemiddel, tempPasient, input));	
+							}
+							
+							else if(input == 3) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+							
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								System.out.println("Antall reit: ");
+								input = scan.nextInt();
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivMilitaerResept(tempLegemiddel, tempPasient, input));
+							}
+							
+							else if(input == 4) {
+								Legemiddel tempLegemiddel = null;
+								String navnLegemiddel = scan.nextLine();
+								System.out.println("Legemidler: ");
+								navnLegemiddel = scan.nextLine();
+								//System.out.println(navnLegemiddel);
+								
+								int j = 0;
+								while (j < system.hentListeLegemidler().stoerrelse()) {
+									if(system.hentListeLegemidler().hent(j).hentNavn().equals(navnLegemiddel)) {
+										tempLegemiddel = system.hentListeLegemidler().hent(j);
+										System.out.println(navnLegemiddel);
+									}
+									j++;
+								}	
+								
+								if(tempLegemiddel == null) {
+									System.out.println("Dette legemiddelet eksisterer ikke i databasen.");
+									break;
+								}
+								
+								
+								//tempLege.skrivHvitResept(tempLegemiddel, tempPasient, input);
+								system.listeResept.leggTil(tempLege.skrivPResept(tempLegemiddel, tempPasient));
+							}
+						}
+					}	
+					else if(input == 4) {
+						
+						while(input != 0) {
+							
+							System.out.println("Type legemiddel:\n1: Vanlig legemiddel\n2: Vanedannende legemiddel\n3: Narkotisk legemiddel\n0: Tilbake");
+							input = scan.nextInt();
+							if(input == 1) {
+								String navn = scan.nextLine();
+								System.out.println("Navn på legemiddel: ");
+								navn = scan.nextLine();
+								
+								
+								System.out.println("Pris: ");
+								double pris = scan.nextDouble();
+								//pris = scan.nextDouble();
+								
+								
+								System.out.println("Virkestoff: ");
+								double virkestoff = scan.nextDouble();
+								//virkestoff = scan.nextInt();
+								
+								VanligLegemiddel vanligLegemiddel = new VanligLegemiddel(navn, pris, virkestoff);
+								system.hentListeLegemidler().leggTilForan(vanligLegemiddel);
+								System.out.println("Legemiddel lagt til.");
+							}
+							
+							else if(input == 2) {
+								String navn = scan.nextLine();
+								System.out.println("Navn på legemiddel: ");
+								navn = scan.nextLine();
+								
+								
+								System.out.println("Pris: ");
+								double pris = scan.nextDouble();
+								//pris = scan.nextDouble();
+								
+								
+								System.out.println("Virkestoff: ");
+								double virkestoff = scan.nextDouble();
+								//virkestoff = scan.nextInt();
+								
+								System.out.println("Styrke, vanedannende: ");
+								int styrke = scan.nextInt();
+								
+								VanedannendeLegemiddel vanedannendeLegemiddel = new VanedannendeLegemiddel(navn, pris, virkestoff, styrke);
+								system.hentListeLegemidler().leggTilForan(vanedannendeLegemiddel);
+								System.out.println("Legemiddel lagt til.");
+							}
+							else if(input == 3) {
+								String navn = scan.nextLine();
+								System.out.println("Navn på legemiddel: ");
+								navn = scan.nextLine();
+								
+								
+								System.out.println("Pris: ");
+								double pris = scan.nextDouble();
+								//pris = scan.nextDouble();
+								
+								
+								System.out.println("Virkestoff: ");
+								double virkestoff = scan.nextDouble();
+								//virkestoff = scan.nextInt();
+								
+								System.out.println("Styrke, narkotisk: ");
+								int styrke = scan.nextInt();
+								
+								NarkotiskLegemiddel narkotiskLegemiddel = new NarkotiskLegemiddel(navn, pris, virkestoff, styrke);
+								system.hentListeLegemidler().leggTilForan(narkotiskLegemiddel);
+								System.out.println("Legemiddel lagt til.");
+							}
+						}
 					}
-					
-					
 				}
 				System.out.println(" ");
 				System.out.println(hovedmeny);
 				input = scan.nextInt();
 			}
-		}
-		
-	
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*Lege nyLege = new Lege("Dangfart Tï¿½nnesen"); //Oppretter en lege
-		Spesialist spesialist = new Spesialist("Knut Knudsen", 2); //Oppretter spesialist
-		//toString: skriver ut
-		System.out.println(nyLege.toString());
-		System.out.println(spesialist.toString());
-		
-		//Legemidler:
-		VanligLegemiddel vanligLegemiddel = new VanligLegemiddel("Paracetamol", 70.50, 500); //Oppretter vanlig legemiddel
-		NarkotiskLegemiddel narkotiskLegemiddel = new NarkotiskLegemiddel("Morfin", 638.90, 15.0, 9); //Oppretter narkotisk legemiddel
-		VanedannendeLegemiddel vanedannendeLegemiddel = new VanedannendeLegemiddel("Nesespray", 35.50, 20, 6); //Oppretter vanedannende Legemiddel
-		VanligLegemiddel vanligLegemiddel1 = new VanligLegemiddel("Prevensjon", 112.50, 500);//For pResept
-		//toString: skriver ut
-		System.out.println(vanligLegemiddel.toString());
-		System.out.println(narkotiskLegemiddel.toString());
-		System.out.println(vanedannendeLegemiddel.toString());
-		System.out.println(vanligLegemiddel1.toString());
-		
-		//Resept:
-		HvitResept hvitResept = new HvitResept(vanligLegemiddel, nyLege, 1, 1);//Oppretter hvit resept med paracetamol som legemiddel, og Dangfart Tï¿½nnesen som lege
-		MilitaerResept militaerResept = new MilitaerResept(narkotiskLegemiddel, nyLege, 2, 5);
-		PResept pResept = new PResept(vanligLegemiddel1, nyLege, 3, 1);
-		BlaaResept blaaResept = new BlaaResept(narkotiskLegemiddel, nyLege, 4, 3);
-		//toString: skriver ut
-		System.out.println(hvitResept.toString());
-		System.out.println(militaerResept.toString());
-		System.out.println(pResept.toString());
-		System.out.println(blaaResept.toString());*/
-		
+			
+			else if(input == 3) {
+				
+				while(input != 0) {
+					System.out.println("Velg Pasient");
+					int i = 0;
+					while(i < system.hentListePasienter().stoerrelse()) {
+						System.out.println((i+1) + ": " + system.hentListePasienter().hent(i).hentNavn() + " fnr: " + system.hentListePasienter().hent(i).hentFoedselsnummer());
+						i++;
+					}
+					System.out.println("0: Avslutt");
+					
+					
+					input = scan.nextInt();
+					Pasient pasient;
+					pasient = system.hentListePasienter().hent(input - 1);
+					System.out.println(pasient);
+					
+					if(pasient.hentResepter().stoerrelse() == 0){
+						System.out.println("Denne pasienten har ingen resepter.");
+					}
+					
+					while(i <= pasient.hentResepter().stoerrelse()) {
+						System.out.println((i+1) + ":" + pasient.hentResepter().hent(i));
+						System.out.println("bruh");
+						i++;
+					}
+				
+					
+					if (input == 0) {
+						break;
+					}
+					
+				
+				}
+				System.out.println(" ");
+				System.out.println(hovedmeny);
+				input = scan.nextInt();
+			}
+		}	
 	}
-
 }
