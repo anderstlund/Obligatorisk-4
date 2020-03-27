@@ -8,23 +8,118 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 		Legesystem system = new Legesystem();
 		try {
 			system.lesFraFil("Testeks.txt");
-			System.out.println(system.hentListePasienter());
+			//System.out.println(system.hentListePasienter());
 			//System.out.println(system.hentListeLegemidler());
-			System.out.println(system.hentListeLeger());
+			//System.out.println(system.hentListeLeger());
 		} catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException: Ingen fil");
 		}
 		
+		
+		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n0: Avslutt";
 		System.out.println(" ");
-		System.out.println("Hovedmeny:\n1: Leger\n2: Pasienter\n3: Resepter\n4: Legemidler\n0: Avslutt");
+		System.out.println(hovedmeny);
 		
 		
 		Scanner scan = new Scanner(System.in);
 		int input = scan.nextInt();
 		
 		while(input != 0) {
-			System.out.println("Bruh");
-			input = scan.nextInt();
+			if(input == 1) {
+				while(input != 0) {
+					System.out.println("Oversikt - meny:\n1: Leger\n2: Pasienter\n3: Resepter\n4: Legemidler\n0: Tilbake ");
+					input = scan.nextInt(); 
+					
+					if(input == 0) {
+						break;
+						}
+					else if(input == 1) {
+						System.out.println("Leger: ");
+						System.out.println(system.hentListeLeger());
+						System.out.println("0: Tilbake ");
+						input = scan.nextInt();
+						}
+					else if(input == 2) {
+						System.out.println("Pasienter: ");
+						System.out.println(system.hentListePasienter());
+						System.out.println("0: Tilbake ");
+						input = scan.nextInt();
+						}
+					else if(input == 3) {
+						System.out.println("Resepter: ");
+						System.out.println(system.hentListeResepter());
+						System.out.println("0: Tilbake ");
+						input = scan.nextInt();
+						}
+					else if(input == 4) {
+						System.out.println("Legemidler: ");
+						System.out.println(system.hentListeLegemidler());
+						System.out.println("0: Tilbake ");
+						input = scan.nextInt();
+						}
+					}
+				System.out.println(" ");
+				System.out.println(hovedmeny);
+				input = scan.nextInt();
+				}
+			
+			if(input == 2) {
+				while(input != 0) {
+					System.out.println("1: Legg til lege\n2: Legg til pasient\n3: Lag ny resept\n4: Legg til legemiddel\n0: Tilbake ");
+					input = scan.nextInt();
+					if(input == 0) {
+						break;
+					}
+					else if(input == 1) {
+						System.out.println("1: Opprett lege\n2: Opprett spesialist");
+						input = scan.nextInt();
+						if(input == 1) {
+							String navn = scan.nextLine();
+							System.out.println("Skriv inn navn (Dr. navn): ");
+							navn = scan.nextLine();
+							String tempLege = navn +"," + 0;
+							
+							Lege nyLege = new Lege(navn);
+							system.hentListeLeger().leggTil(nyLege);
+							
+						}
+						else if(input == 2) {
+							int kontrollId; 
+							String navn = scan.nextLine();
+							
+							System.out.println("Skriv inn navn (Dr. navn): ");
+							navn = scan.nextLine();
+							System.out.println("Skriv inn kontrollId: ");
+							input = scan.nextInt();
+							
+							kontrollId = input;
+							String nySpesialist = navn + "," + kontrollId;
+							
+						}
+					}
+					
+					else if(input == 2) {
+						String navn = scan.nextLine();
+						System.out.println("Navn: ");
+						navn = scan.nextLine();
+						
+						
+						System.out.println("Foedselsnummer: ");
+						String fnr = scan.nextLine();
+						
+						String tempPasient = navn + "," + fnr;
+						
+						Pasient nyPasient = new Pasient(navn, fnr);
+						system.hentListePasienter().leggTilForan(nyPasient);
+						
+					}
+					
+					
+				}
+				System.out.println(" ");
+				System.out.println(hovedmeny);
+				input = scan.nextInt();
+			}
 		}
 		
 	

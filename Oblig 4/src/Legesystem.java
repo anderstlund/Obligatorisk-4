@@ -7,13 +7,13 @@ public class Legesystem {
 	public File fil;
 	public Lenkeliste<Pasient> listePasienter;
 	public Lenkeliste<Legemiddel> listeLegemidler;
-	public SortertLenkeliste<Lege> listeLege; //Må kanskje gjøre sortert
+	public SortertLenkeliste<Lege> listeLeger; //Må kanskje gjøre sortert
 	public Lenkeliste<Resept> listeResept;
 	
 	public Legesystem() {
 		listePasienter = new Lenkeliste<Pasient>();
 		listeLegemidler = new Lenkeliste<Legemiddel>();
-		listeLege = new SortertLenkeliste<Lege>(); //kanksje gjøres sortert
+		listeLeger = new SortertLenkeliste<Lege>(); //kanksje gjøres sortert
 		listeResept = new Lenkeliste<Resept>();
 	}
 	
@@ -38,7 +38,7 @@ public class Legesystem {
 					//System.out.println(linje);
 					
 				}	
-				System.out.println(" ");
+				//System.out.println(" ");
 			}
 			
 			else if(kontrollOrd[1].equals("Legemidler")) {
@@ -69,7 +69,7 @@ public class Legesystem {
 					}
 					//System.out.println(linje);
 				}
-				System.out.println(" ");
+				//System.out.println(" ");
 			}
 			
 			else if(kontrollOrd[1].equals("Leger")) {
@@ -81,15 +81,15 @@ public class Legesystem {
 					int type = Integer.parseInt(ord[1]);
 					if (type == 0) {
 						Lege obj = new Lege(navn);
-						listeLege.leggTil(obj); //kanskje implimentere sortert lenkeliste
+						listeLeger.leggTil(obj);; //kanskje implimentere sortert lenkeliste
 					}
 					else if (type != 0){
 						Spesialist obj = new Spesialist(navn, type);
-						listeLege.leggTil(obj); //kanskje implimentere sortert lenkeliste
+						listeLeger.leggTil(obj); //kanskje implimentere sortert lenkeliste
 					}
 					//System.out.println(linje);
 				}	
-				System.out.println(" ");
+				//System.out.println(" ");
 			}
 			
 			else if(kontrollOrd[1].equals("Resepter")) {
@@ -117,9 +117,9 @@ public class Legesystem {
 						i++;
 					}
 					int e = 0;
-					while (e < listeLege.stoerrelse()) {
-						if(listeLege.hent(e).hentNavnLege().equals(navnLege)) {
-							tempLege = listeLege.hent(e);
+					while (e < listeLeger.stoerrelse()) {
+						if(listeLeger.hent(e).hentNavnLege().equals(navnLege)) {
+							tempLege = listeLeger.hent(e);
 						}
 						e++;
 					}
@@ -156,8 +156,8 @@ public class Legesystem {
 		return listeLegemidler;
 	}
 	
-	public Lenkeliste<Lege> hentListeLeger(){
-		return listeLege;
+	public SortertLenkeliste<Lege> hentListeLeger(){
+		return listeLeger;
 	}
 	
 	public Lenkeliste<Resept> hentListeResepter(){

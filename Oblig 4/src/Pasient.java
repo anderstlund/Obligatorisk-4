@@ -1,4 +1,4 @@
-public class Pasient {
+public class Pasient{
 	
 	public String navn;
 	public String foedselsnummer;
@@ -40,12 +40,14 @@ public class Pasient {
 	
 	@Override
 	public String toString() {
-		String returnString;
-		
-		returnString = hentNavn() + "\n";
-		returnString += "Foedselsnummer: " + hentFoedselsnummer() + "\n";
-		returnString += "Unik Pasient Id: " + hentIid() + "\n";
-		return returnString;
+		String returnString = "";
+	
+			returnString = hentNavn() + "\n";
+			returnString += "Foedselsnummer: " + hentFoedselsnummer() + "\n";
+			returnString += "Unik Pasient Id: " + hentIid() + "\n";
+			returnString += "\n";
+
+			return returnString;
 	}
 	
 }

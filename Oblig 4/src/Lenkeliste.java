@@ -104,15 +104,14 @@ public class Lenkeliste<T> implements Liste<T> {
 	}
 	
 	@Override
-	public String toString() throws UgyldigListeIndeks { //toString, brukt for aa teste kode
-		
-		String returnString = "\n";
+	public String toString() throws UgyldigListeIndeks { //toString, brukes for aa skrive ut lister
 		Node temp = start;
+		String returnString = "";
 		while(temp != null) {
 			returnString += temp.data.toString();
 			temp = temp.neste;
+			
 		}
-		
 		return returnString;
 	}
 
