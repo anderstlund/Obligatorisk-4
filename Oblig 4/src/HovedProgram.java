@@ -1,4 +1,8 @@
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class HovedProgram<T> extends LenkelisteIterator<T>{
@@ -16,7 +20,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 		}
 		
 		
-		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n3: Bruk resept\n4: Vis Statistikk\n0: Avslutt";
+		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n3: Bruk resept\n4: Vis Statistikk\n5: Skriv til fil\n0: Avslutt";
 		System.out.println(" ");
 		System.out.println(hovedmeny);
 		
@@ -58,9 +62,9 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 						input = scan.nextInt();
 						}
 					}
-				System.out.println(" ");
+				/*System.out.println(" ");
 				System.out.println(hovedmeny);
-				input = scan.nextInt();
+				input = scan.nextInt();*/
 				}
 			
 			else if(input == 2) {
@@ -518,55 +522,63 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 						}
 					}
 				}
-				System.out.println(" ");
+				/*System.out.println(" ");
 				System.out.println(hovedmeny);
-				input = scan.nextInt();
+				input = scan.nextInt();*/
 			}
 			
 			else if(input == 3) {
 				
 				while(input != 0) {
+					
 					System.out.println("Velg Pasient");
 					int i = 0;
 					while(i < system.hentListePasienter().stoerrelse()) {
 						System.out.println((i+1) + ": " + system.hentListePasienter().hent(i).hentNavn() + " fnr: " + system.hentListePasienter().hent(i).hentFoedselsnummer());
 						i++;
 					}
-					System.out.println("0: Avslutt");
-					
-					
+					System.out.println("0: Tilbake");
 					input = scan.nextInt();
+					if(input == 0) {
+						break;
+					}
+					
 					Pasient pasient = null;
+					String navn;
 					pasient = system.hentListePasienter().hent(input-1);
+					navn = system.hentListePasienter().hent(input-1).hentNavn();
 					
 					if(pasient.hentResepter().stoerrelse() == 0){
 						System.out.println("Denne pasienten har ingen resepter.");
 					}
 					int u = 0;
+					System.out.println("Valgt pasient: " + navn);
 					System.out.println("Hvilken resept vil du bruke?\n");
 					while(u < pasient.hentResepter().stoerrelse()) {
 						
 						System.out.println((u+1) + ":" + pasient.hentResepter().hent(u).hentLegemiddel().hentNavn() + " " + pasient.hentResepter().hent(u).hentReit() + " reit");
 						u++;
 					}
-					System.out.println("0: Avslutt");
-					
+					System.out.println("0: Tilbake");
 					input = scan.nextInt();
-					if (pasient.hentResepter().hent(input-1).bruk()) {
-						System.out.println("Brukte resept paa" + pasient.hentResepter().hent(input-1).hentLegemiddel().hentNavn() + ". GjenvÃ¦rende reit: " + pasient.hentResepter().hent(input-1).hentReit());
-						break;
-					} else {
-						System.out.println("Denne resepten er brukt opp! ");
+					if(input == 0) {
 						break;
 					}
+					if (pasient.hentResepter().hent(input-1).bruk()) {
+						System.out.println("Brukte resept paa " + pasient.hentResepter().hent(input-1).hentLegemiddel().hentNavn() + ". Gjenvaerende reit: " + pasient.hentResepter().hent(input-1).hentReit());
+						//break;
+					} else {
+						System.out.println("Denne resepten er brukt opp! ");
+						//break;
+					}
 				}
-				System.out.println(" ");
+				/*System.out.println(" ");
 				System.out.println(hovedmeny);
-				input = scan.nextInt();
+				input = scan.nextInt();*/
 			}
 			if (input == 4) {
 				while (input != 0) {
-					System.out.println("1: Antall utskrevne vanedannende legemidler\n2: Antall utskrevne narkotiske legemidler\n3: Mulig misbruk av narkotika\n0: Avslutt");
+					System.out.println("1: Antall utskrevne vanedannende legemidler\n2: Antall utskrevne narkotiske legemidler\n3: Mulig misbruk av narkotika\n0: Tilbake");
 					input = scan.nextInt();
 					if (input == 1) {
 						int p = 0;
@@ -598,40 +610,146 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 						input = scan.nextInt();
 					if (input == 0) {
 						break;
-					}
+					}		
 					}
 					if (input == 3) {
 						System.out.println("1: Leger:\n2: Pasienter: ");
 						input = scan.nextInt();
 						if (input == 1) {
 							int i = 0;
-							
-							while(i < system.hentListeLeger().stoerrelse()) {
-								int totAnt = 0;
-								int l = 0;
-								while (l < system.hentListeLeger().hent(i).hentListeResepter().stoerrelse()) {
-									if(system.hentListeLeger().hent(l).hentListeResepter().hent(l).hentLegemiddel().hentType().equals("Narkotisk")) {
-										totAnt++;
-						
-									}
-									l++;
-								}
-									System.out.println(system.hentListeLeger().hent(i).hentNavnLege() + " har skrevet ut: " + totAnt);
+												
+							while (i < system.hentListeLeger().stoerrelse()) {
+								int ant = 0;
+								int j = 0;
 								
+									while (j < system.hentListeLeger().hent(i).hentListeResepter().stoerrelse()) {
+										if(system.hentListeLeger().hent(i).hentListeResepter().hent(j).hentLegemiddel().hentType().equals("Narkotisk")) {
+											ant ++;										
+										}
+										j++;
+									}	
+									if(ant > 0) {
+										System.out.println(system.hentListeLeger().hent(i).hentNavnLege() + ": " + ant + (" (Antall resepter)"));
+										
+									}
+									i++;
+								}
+							System.out.println("");
+							}
+						else if(input == 2) {
+							int i = 0;
+							
+							while (i < system.hentListePasienter().stoerrelse()) {
+								int ant = 0;
+								int j = 0;
+								
+								while (j < system.hentListePasienter().hent(i).hentResepter().stoerrelse()) {
+									if(system.hentListePasienter().hent(i).hentResepter().hent(j).hentLegemiddel().hentType().equals("Narkotisk")) {
+										ant ++;
+									}
+									j++;
+								}
+								if(ant > 0) {
+									System.out.println(system.hentListePasienter().hent(i).hentNavn() + ": " + ant + (" (Antall resepter)"));
+								}
 								i++;
 							}
-				
+							System.out.println("");
 						}
-						else if(input == 2) {
+					}				
+				} 
+			}
+			
+			else if (input == 5) {
+				while(input != 0) {
+					String filnavn = "Testeks.txt";
+					int i = 0;
+					int j = 0;
+					int k = 0;
+					int l = 0;
+					
+					try {
+						PrintWriter out = new PrintWriter(filnavn);
+						out.println("# Pasienter (navn, fnr)");
+						try {
+							while(i < system.hentListePasienter().stoerrelse()) {
+								out.println(system.hentListePasienter().hent(i).hentNavn() + "," + system.hentListePasienter().hent(i).hentFoedselsnummer());
+								i++;
+							}
+							
+						}
+					catch (NoSuchElementException e) {
+						System.out.println("Ingen elementer å skrive ut til listen");
+						}
+						
+						
+						
+					
+						
+						out.println("# Legemidler (navn,type,pris,virkestoff,[styrke])");
+						try {
+							while(j < system.hentListeLegemidler().stoerrelse()) {
+								out.println(system.hentListeLegemidler().hent(j).hentNavn() + "," + system.hentListeLegemidler().hent(j).hentType() + "," + system.hentListeLegemidler().hent(j).hentPris() + "," + system.hentListeLegemidler().hent(j).hentVirkemiddel() + ",0");
+								j++;
+							}
+							
+						}
+					catch (NoSuchElementException e) {
+						System.out.println("Ingen elementer å skrive ut til listen");
+						}
+						
+						out.println("# Leger (navn,kontrollid / 0 hvis vanlig lege)");
+						try {
+							while(k < system.hentListeLeger().stoerrelse()) {
+								out.println(system.hentListeLeger().hent(k).hentNavnLege() + ",0");
+								k++;
+							}
+							
+						}
+					catch (NoSuchElementException e) {
+						System.out.println("Ingen elementer å skrive ut til listen");
+						}
+						
+						out.println("# Resepter (legemiddelNummer,legeNavn,pasientID,type,[reit])");
+						try {
+							while(l < system.hentListeResepter().stoerrelse()) {
+								out.println(system.hentListeResepter().hent(l).hentLegemiddel().hentId() + "," + system.hentListeResepter().hent(l).hentLege().hentNavnLege() + "," + system.hentListeResepter().hent(l).hentPasient().hentIid() + "," + system.hentListeResepter().hent(l).hentFarge() + "," + system.hentListeResepter().hent(l).hentReit());
+								l++;
+							}
+							
+						}
+					catch (NoSuchElementException e) {
+						System.out.println("Ingen elementer å skrive ut til listen");
+						}
+
+						out.close();
+						
+						
+						System.out.println("Skrevet til fil");
+						System.out.println("0: Tilbake");
+						input = scan.nextInt();
+						if(input == 0) {
 							break;
 						}
-						else {break;}
+						
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
+					
+					
+					
+					input = scan.nextInt();
 				}
 			}
+			
+			
 			System.out.println(" ");
 			System.out.println(hovedmeny);
 			input = scan.nextInt();
+	
 		}	
 	}
 }
+
+

@@ -18,6 +18,7 @@ abstract class Legemiddel{
 	private int unikId = 0;
 	private static int teller = 0;
 	String legemiddelType;
+	int styrke = 0;
 	
 	public Legemiddel(String pNavn, double pPris, double pVirkemiddel, String pLegemiddelType) {
 		navn = pNavn;
@@ -26,6 +27,10 @@ abstract class Legemiddel{
 		unikId = unikId + teller;
 		teller++;
 		legemiddelType = pLegemiddelType;
+	}
+	
+	public int hentStyrke() {
+		return styrke;
 	}
 	
 	public String hentNavn() {

@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -146,6 +147,8 @@ public class Legesystem {
 				}	
 			}
 		}
+		
+		scan.close();
 	}
 
 	public Lenkeliste<Pasient> hentListePasienter() {
