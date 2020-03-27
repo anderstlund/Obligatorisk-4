@@ -16,7 +16,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 		}
 		
 		
-		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n3: Bruk resept\n0: Avslutt";
+		String hovedmeny = "Hovedmeny:\n1: Oversikt\n2: Legg til\n3: Bruk resept\n4: Vis Statistikk\n0: Avslutt";
 		System.out.println(" ");
 		System.out.println(hovedmeny);
 		
@@ -453,7 +453,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							input = scan.nextInt();
 							if(input == 1) {
 								String navn = scan.nextLine();
-								System.out.println("Navn på legemiddel: ");
+								System.out.println("Navn pï¿½ legemiddel: ");
 								navn = scan.nextLine();
 								
 								
@@ -473,7 +473,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							
 							else if(input == 2) {
 								String navn = scan.nextLine();
-								System.out.println("Navn på legemiddel: ");
+								System.out.println("Navn pï¿½ legemiddel: ");
 								navn = scan.nextLine();
 								
 								
@@ -495,7 +495,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 							}
 							else if(input == 3) {
 								String navn = scan.nextLine();
-								System.out.println("Navn på legemiddel: ");
+								System.out.println("Navn pï¿½ legemiddel: ");
 								navn = scan.nextLine();
 								
 								
@@ -536,31 +536,102 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 					
 					
 					input = scan.nextInt();
-					Pasient pasient;
-					pasient = system.hentListePasienter().hent(input - 1);
-					System.out.println(pasient);
+					Pasient pasient = null;
+					pasient = system.hentListePasienter().hent(input-1);
 					
 					if(pasient.hentResepter().stoerrelse() == 0){
 						System.out.println("Denne pasienten har ingen resepter.");
 					}
-					
-					while(i <= pasient.hentResepter().stoerrelse()) {
-						System.out.println((i+1) + ":" + pasient.hentResepter().hent(i));
-						System.out.println("bruh");
-						i++;
+					int u = 0;
+					System.out.println("Hvilken resept vil du bruke?\n");
+					while(u < pasient.hentResepter().stoerrelse()) {
+						
+						System.out.println((u+1) + ":" + pasient.hentResepter().hent(u).hentLegemiddel().hentNavn() + " " + pasient.hentResepter().hent(u).hentReit() + " reit");
+						u++;
 					}
-				
+					System.out.println("0: Avslutt");
 					
-					if (input == 0) {
+					input = scan.nextInt();
+					if (pasient.hentResepter().hent(input-1).bruk()) {
+						System.out.println("Brukte resept paa" + pasient.hentResepter().hent(input-1).hentLegemiddel().hentNavn() + ". GjenvÃ¦rende reit: " + pasient.hentResepter().hent(input-1).hentReit());
+						break;
+					} else {
+						System.out.println("Denne resepten er brukt opp! ");
 						break;
 					}
-					
-				
 				}
 				System.out.println(" ");
 				System.out.println(hovedmeny);
 				input = scan.nextInt();
 			}
+			if (input == 4) {
+				while (input != 0) {
+					System.out.println("1: Antall utskrevne vanedannende legemidler\n2: Antall utskrevne narkotiske legemidler\n3: Mulig misbruk av narkotika\n0: Avslutt");
+					input = scan.nextInt();
+					if (input == 1) {
+						int p = 0;
+						int antVane = 0;
+						while(p < system.hentListeResepter().stoerrelse()) {
+							if(system.hentListeResepter().hent(p).hentLegemiddel().hentType().equals("Vanedannende")) {
+								antVane++;
+							}
+							p++;
+						}
+						System.out.println("Totatl antall utskrevne vanedannende legemidler: " + antVane);
+						System.out.println("0: Avslutt");
+						input = scan.nextInt();
+					if (input == 0) {
+						break;
+					}
+					}
+					if (input == 2) {
+						int p = 0;
+						int antVane = 0;
+						while(p < system.hentListeResepter().stoerrelse()) {
+							if(system.hentListeResepter().hent(p).hentLegemiddel().hentType().equals("Narkotisk")) {
+								antVane++;
+							}
+							p++;
+						}
+						System.out.println("Totatl antall utskrevne narkotiske legemidler: " + antVane);
+						System.out.println("0: Avslutt");
+						input = scan.nextInt();
+					if (input == 0) {
+						break;
+					}
+					}
+					if (input == 3) {
+						System.out.println("1: Leger:\n2: Pasienter: ");
+						input = scan.nextInt();
+						if (input == 1) {
+							int i = 0;
+							
+							while(i < system.hentListeLeger().stoerrelse()) {
+								int totAnt = 0;
+								int l = 0;
+								while (l < system.hentListeLeger().hent(i).hentListeResepter().stoerrelse()) {
+									if(system.hentListeLeger().hent(l).hentListeResepter().hent(l).hentLegemiddel().hentType().equals("Narkotisk")) {
+										totAnt++;
+						
+									}
+									l++;
+								}
+									System.out.println(system.hentListeLeger().hent(i).hentNavnLege() + " har skrevet ut: " + totAnt);
+								
+								i++;
+							}
+				
+						}
+						else if(input == 2) {
+							break;
+						}
+						else {break;}
+					}
+				}
+			}
+			System.out.println(" ");
+			System.out.println(hovedmeny);
+			input = scan.nextInt();
 		}	
 	}
 }

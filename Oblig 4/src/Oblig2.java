@@ -167,6 +167,10 @@ abstract class Resept{
 		return unikId;
 	}
 	
+	public Legemiddel hentLegemiddel() {
+		return legemiddel;
+	}
+	
 	public String hentFarge() {
 		return farge;
 	}
@@ -177,6 +181,10 @@ abstract class Resept{
 	
 	public Pasient hentPasient() {
 		return pasient;
+	}
+	
+	public int hentReit() {
+		return reit;
 	}
 	public String toString() {
 		String returnString = "\n********************\n";
@@ -304,6 +312,7 @@ class Lege implements Comparable<Lege>{
 			try {
 				HvitResept resept = new HvitResept(pLegemiddel, this, pPasient, pReit);
 				utskrevedeResepter.leggTilForan(resept);
+				pPasient.hentResepter().leggPaa(resept);
 				return resept;
 			}
 			catch (Exception e){
@@ -318,6 +327,7 @@ class Lege implements Comparable<Lege>{
 		try {
 			MilitaerResept resept = new MilitaerResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
@@ -332,6 +342,7 @@ class Lege implements Comparable<Lege>{
 		try {
 			PResept resept = new PResept(pLegemiddel, this, pPasient, 3);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
@@ -346,6 +357,7 @@ class Lege implements Comparable<Lege>{
 		try {
 			BlaaResept resept = new BlaaResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
@@ -378,6 +390,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 		try {
 			HvitResept resept = new HvitResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
@@ -390,6 +403,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 		try {
 			MilitaerResept resept = new MilitaerResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
@@ -401,6 +415,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 		try {
 			PResept resept = new PResept(pLegemiddel, this, pPasient, 3);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
@@ -412,6 +427,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 		try {
 			BlaaResept resept = new BlaaResept(pLegemiddel, this, pPasient, pReit);
 			utskrevedeResepter.leggTilForan(resept);
+			pPasient.hentResepter().leggPaa(resept);
 			return resept;
 		}
 		catch (Exception e){
