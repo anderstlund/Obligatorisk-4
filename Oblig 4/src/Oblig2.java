@@ -61,12 +61,11 @@ abstract class Legemiddel{
 		String returnString;
 		
 		returnString = "\n";
-		returnString += "Legemiddel: " + "\n";
 		returnString += "Id: " + hentId() + "\n"; 
 		returnString += "Navn: " + hentNavn() + "\n";
 		returnString += "Virkemiddel: " + hentVirkemiddel() + "\n";
 		returnString += "Type: " + hentType() + "\n";
-		returnString += "Pris: " + hentPris();
+		returnString += "Pris: " + hentPris() + "\n";
 		
 		
 		return returnString;
@@ -93,7 +92,7 @@ class NarkotiskLegemiddel extends Legemiddel{
 	public String toString() {
 		String returnString = super.toString();
 		
-		returnString += "Narkotisk styrke: " + hentNarkotiskStyrke();
+		returnString += "Narkotisk styrke: " + hentNarkotiskStyrke() + "\n";
 		
 		return returnString;
 	}
@@ -113,7 +112,7 @@ class VanedannendeLegemiddel extends Legemiddel{
 	public String toString() {
 		String returnString = super.toString();
 		
-		returnString += "Vanedannende styrke: " + hentVanedannendeStyrke();
+		returnString += "Vanedannende styrke: " + hentVanedannendeStyrke() + "\n";
 		
 		return returnString;
 	}
@@ -192,7 +191,7 @@ abstract class Resept{
 		return reit;
 	}
 	public String toString() {
-		String returnString = "\n********************\n";
+		String returnString = "\n";
 		returnString += "Resept med farge: " + hentFarge() +"\n";
 		if(hentMilitaerResept()) {
 			returnString += "Type resept: Militaer resept \n";
@@ -205,7 +204,7 @@ abstract class Resept{
 		returnString += "Utskrivende lege: " + utskrivendeLege.hentNavnLege() + "\n";
 		returnString += "Pasient navn: " + hentPasient() + "\n"; //** denne er det noe feil med, må endres til hentPasient() ??
 		returnString += "Reit: " + reit + "\n";
-		returnString += "Pris � betale: " + prisAaBetale() + "\n";
+		returnString += "Pris aa betale: " + prisAaBetale() + "\n";
 															//legge til en toString som skriver unikId med hentId() istedenfor
 		return returnString;
 	}
@@ -292,7 +291,7 @@ class Lege implements Comparable<Lege>{
 	}
 	
 	public String toString() {
-		String returnString = "Navn: " + hentNavnLege() + "\n";
+		String returnString = hentNavnLege() + "\n";
 		return returnString;
 	}
 	
@@ -386,7 +385,7 @@ class Spesialist extends Lege implements Godkjenningsfritak { //Tar i bruk inter
 	}
 	
 	public String toString() {
-		String returnString = "Navn: " + hentNavnLege() + ". KontrollId: " + hentKontrollId() + "\n";
+		String returnString = hentNavnLege() + ". KontrollId: " + hentKontrollId() + "\n";
 		return returnString;
 	}
 	
