@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class HovedProgram<T> extends LenkelisteIterator<T>{
+public class HovedProgram<T> extends Lenkeliste<T>{
 
 	public static void main(String[] args) throws UlovligUtskrift {
 		
@@ -581,6 +581,25 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 					System.out.println("1: Antall utskrevne vanedannende legemidler\n2: Antall utskrevne narkotiske legemidler\n3: Mulig misbruk av narkotika\n0: Tilbake");
 					input = scan.nextInt();
 					if (input == 1) {
+						
+						//int p = 0;
+						int antVane = 0;
+						for(Resept e: system.listeResept) { //Bruker iteratoren her.
+							if(e.hentLegemiddel().hentType().equals("Vanedannende")) {
+							//if(system.hentListeResepter().hent(p).hentLegemiddel().hentType().equals("Vanedannende")) {
+								antVane++;
+							}
+							//p++;
+						}
+						System.out.println("Total antall utskrevne vanedannende legemidler: " + antVane);
+						System.out.println("0: Avslutt");
+						input = scan.nextInt();
+					if (input == 0) {
+						break;
+					}						
+						
+						
+						/*
 						int p = 0;
 						int antVane = 0;
 						while(p < system.hentListeResepter().stoerrelse()) {
@@ -594,7 +613,7 @@ public class HovedProgram<T> extends LenkelisteIterator<T>{
 						input = scan.nextInt();
 					if (input == 0) {
 						break;
-					}
+					}*/
 					}
 					if (input == 2) {
 						int p = 0;

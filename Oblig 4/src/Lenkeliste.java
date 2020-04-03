@@ -8,6 +8,8 @@ public class Lenkeliste<T> implements Liste<T> {
 			data = x; 
 		}
 	}
+	
+
 	public Node start = null; //lager start
 	
 	@Override
@@ -200,10 +202,28 @@ public class Lenkeliste<T> implements Liste<T> {
 		}
 	}
 
+	public class LenkelisteIterator implements Iterator<T> {
+		Node current;
+		public LenkelisteIterator(Lenkeliste<T> lenkeliste) {
+			current = lenkeliste.start;
+		}
+		@Override
+		public boolean hasNext() {
+			return current != null;
+		}
+
+		@Override
+		public T next() {
+			T data = current.data;
+			current = current.neste;
+			return data;
+		}
+	}	
+	
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
-		LenkelisteIterator<T> lenkeIterator = new LenkelisteIterator<T>();
-		return lenkeIterator;
+		
+		return new LenkelisteIterator(this);
 	}
 }
